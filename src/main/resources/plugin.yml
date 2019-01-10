@@ -1,0 +1,14 @@
+name: GenderPrefixes
+main: sh.okx.genderprefixes.GenderPrefixes
+author: Okx
+version: 1.0
+api-version: 1.13
+depend: [LuckPerms]
+
+commands:
+  male:
+    permission: gender.command
+    description: Set your gender in prefixes as male
+  female:
+    permission: gender.command
+    description: Set your gender in prefixes as female

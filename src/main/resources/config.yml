@@ -1,0 +1,5 @@
+default-gender: male
+
+messages:
+  male: 'You will now get male prefixes'
+  female: 'You will now get female prefixes'
