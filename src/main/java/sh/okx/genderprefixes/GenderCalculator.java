@@ -1,7 +1,9 @@
 package sh.okx.genderprefixes;
 
-import me.lucko.luckperms.api.context.ContextCalculator;
-import me.lucko.luckperms.api.context.MutableContextSet;
+import net.luckperms.api.context.ContextCalculator;
+import net.luckperms.api.context.ContextConsumer;
+import net.luckperms.api.context.ContextSet;
+import net.luckperms.api.context.ImmutableContextSet;
 import org.bukkit.entity.Player;
 
 public class GenderCalculator implements ContextCalculator<Player> {
@@ -12,8 +14,16 @@ public class GenderCalculator implements ContextCalculator<Player> {
   }
 
   @Override
-  public MutableContextSet giveApplicableContext(Player subject, MutableContextSet accumulator) {
-    accumulator.add("gender", Gender.getGender(subject, defaultGender).name());
-    return accumulator;
+  public void calculate(Player target, ContextConsumer consumer) {
+    consumer.accept("gender", Gender.getGender(target, defaultGender).toString());
+  }
+
+  @Override
+  public ContextSet estimatePotentialContexts() {
+    ImmutableContextSet.Builder builder = ImmutableContextSet.builder();
+    for (Gender gender : Gender.values()) {
+      builder.add("gender", gender.toString());
+    }
+    return builder.build();
   }
 }

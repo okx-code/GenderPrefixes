@@ -1,8 +1,8 @@
 name: GenderPrefixes
 main: sh.okx.genderprefixes.GenderPrefixes
 author: Okx
-version: 1.0
-api-version: 1.13
+version: 1.1
+api-version: 1.15
 depend: [LuckPerms]
 
 commands:
